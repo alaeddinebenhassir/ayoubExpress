@@ -23,7 +23,9 @@ def index(request):
             data = {
                 'message' : 'form is saved'      
             }
-            return JsonResponse(data)
+            return JsonResponse(data) ,redirect(to,url='/catloge',permanent=False)
+            
+
         else:
             
             dataerr = {
@@ -40,18 +42,84 @@ def index(request):
 def show_categories(request):
     c = Categorie.objects.all()
     product = Item.objects.all()
+    if request.is_ajax() :
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            #username = form.cleaned_data.get('username')
+            #raw_password = form.cleaned_data.get('password1')
+            #user = authenticate(username=username, password=raw_password)
+            #login(request, user)
+            
+            data = {
+                'message' : 'form is saved'      
+            }
+            return JsonResponse(data)
+        else:
+            
+            dataerr = {
+                'message' : 'wrong'      
+            }
+            return JsonResponse(dataerr , safe=False)
+    else:
+        form = SignUpForm()
+
     return render(request ,'categories.html' ,locals())
 
 def show_categorie(request , slug):
     c = Categorie.objects.all()
     p = get_object_or_404(Categorie ,slug=slug)
     products = Item.objects.all().filter(ctgr=p.pk)
+    if request.is_ajax() :
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            #username = form.cleaned_data.get('username')
+            #raw_password = form.cleaned_data.get('password1')
+            #user = authenticate(username=username, password=raw_password)
+            #login(request, user)
+            
+            data = {
+                'message' : 'form is saved'      
+            }
+            return JsonResponse(data)
+        else:
+            
+            dataerr = {
+                'message' : 'wrong'      
+            }
+            return JsonResponse(dataerr , safe=False)
+    else:
+        form = SignUpForm()
+
     return render(request ,'products.html' , locals() )
 
 def show_products(request , slug ):
     c = Categorie.objects.all()
 
     p = get_object_or_404(Item , slug=slug)
+    if request.is_ajax() :
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            #username = form.cleaned_data.get('username')
+            #raw_password = form.cleaned_data.get('password1')
+            #user = authenticate(username=username, password=raw_password)
+            #login(request, user)
+            
+            data = {
+                'message' : 'form is saved'      
+            }
+            return JsonResponse(data)
+        else:
+            
+            dataerr = {
+                'message' : 'wrong'      
+            }
+            return JsonResponse(dataerr , safe=False)
+    else:
+        form = SignUpForm()
+
     return render(request ,'product.html' ,locals())
 def test_items(request):
     p = Item.objects.all()

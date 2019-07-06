@@ -29,6 +29,10 @@ class Item(models.Model):
     old_price=models.DecimalField(max_digits = 8 , decimal_places = 2 , null=True)
     pubdate = models.DateTimeField(auto_now = True )
     img = models.ImageField(upload_to = 'img/product/', default = 'pic_folder/None/no-img.jpg')
+    sub_img_1 = models.ImageField(upload_to = 'img/product/', default = 'pic_folder/None/no-img.jpg')
+    sub_img_2 = models.ImageField(upload_to = 'img/product/', default = 'pic_folder/None/no-img.jpg')
+    sub_img_3 = models.ImageField(upload_to = 'img/product/', default = 'pic_folder/None/no-img.jpg')
+    brand = models.CharField(max_length = 255 , null=True)
     meta_description = models.CharField(max_length = 255 , help_text = '.....', null=True)
     meta_keywords = models.CharField(max_length = 255 , help_text='.....' ,null=True)
     def __str__(self):

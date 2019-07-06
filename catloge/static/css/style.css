@@ -345,6 +345,7 @@ ol {
 }
 
 .header-search-form {
+	border-block-color: red ;
 	width: 100%;
 	position: relative;
 	padding: 0 10px;
@@ -934,7 +935,6 @@ ol {
 -------------------------*/
 
 .product-filter-section {
-	
 	padding-bottom: 60px;
 }
 
